@@ -1,0 +1,50 @@
+{
+	"name": "Development",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+        "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+			"packages": "tig, entr, git-extras, iputils-ping"
+		},	
+        "ghcr.io/devcontainers/features/rust:1": {
+			"version": "1.78.0"
+		},
+		"ghcr.io/devcontainers/features/java:1": {
+			"jdkDistro": "open",
+			"version": "22-open",
+			"installMaven": true,
+			"mavenVersion": "3.9.7"
+		},
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "20.11.1"
+		},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+			"version": "1.30.1",
+			"minikube": "1.33.1",
+			"helm": "3.15.1"
+		}
+	},
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"rust-lang.rust-analyzer",
+				"ms-kubernetes-tools.vscode-kubernetes-tools"
+			],
+			"settings": {
+				"files.eol": "\n",
+				"editor.tabSize": 4,
+				"terminal.integrated.shell.linux": "/bin/bash",
+				"editor.formatOnPaste": false,
+				"editor.formatOnSave": true,
+				"editor.formatOnType": true,
+				"files.trimTrailingWhitespace": true,
+				"files.watcherExclude": {
+					"**/target/**": true
+				}
+			}
+		}
+	}
+}
